@@ -1,0 +1,45 @@
+﻿@model ProfileManagement.ViewModels.ExperienceViewModel
+
+@if (Model.Id == 0)
+{
+    <div class="jumbotron">
+        <div class="form-group">
+            <h3><strong>No Job Experience Found.</strong></h3><br />
+            <h3>Please check your request</h3>
+            @Html.ActionLink("All Experience", "GetAllExperience", "Experience", null, new { @class = "btn btn-success", @style = "color:white" })
+            @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-info", @style = "color:white" })
+        </div>
+    </div>
+}
+else
+{
+    <div class="jumbotron">
+        <div class="form-group">
+            <h3>Want to Add More Job Experience?</h3>
+            @Html.ActionLink("Add Experience", "AddExperience", "Experience", null, new { @class = "btn btn-success", @style = "color:white" })
+            @Html.ActionLink("View All Experience", "GetAllExperience", "Experience", null, new { @class = "btn btn-info", @style = "color:white" })
+
+        </div>
+    </div>
+
+    <h3>Here are Jing's Experience for ID = @Model.Id</h3><br />
+    <table class="table table-bordered table-hover">
+        <tr style="font-size:large;">
+            <td>Job Name</td>
+            <td>Company Name</td>
+            <td>Experience Description</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+        <tr style="font-size:medium;">
+            <td>@Model.JobName</td>
+            <td>@Model.CompanyName</td>
+            <td>@Model.JobDescription</td>
+            <td>@Html.ActionLink("Edit", "EditExperience", "Experience", new { id = Model.Id }, new { @class = "btn btn-success", @style = "color:white" })</td>
+            <td>@Html.ActionLink("Delete", "DeleteExperience", "Experience", new { id = Model.Id }, new { @class = "btn btn-danger", @style = "color:white", onclick = "return confirm('Do you really want to delete Job Experience?')" })</td>
+        </tr>
+        <tr></tr>
+    </table>
+
+
+}

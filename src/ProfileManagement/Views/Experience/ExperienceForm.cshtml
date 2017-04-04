@@ -1,0 +1,139 @@
+﻿@model ProfileManagement.ViewModels.ExperienceViewModel
+
+@{
+    ViewBag.Title = "Experience Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    if (Model.Id != 0)
+    {
+        <h3>Edit Experience </h3>
+        <div style="color:red;">
+            @Html.ValidationSummary()
+        </div>
+
+        @using (Html.BeginForm("SaveExperience", "Experience", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.JobName)
+                @Html.TextBoxFor(m => m.JobName, new { @class = "form-control" })
+                <div style="color:red;">
+                    @Html.ValidationMessageFor(m => m.JobName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CompanyName)
+                @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+                <div style="color:red;">
+                    @Html.ValidationMessageFor(m => m.CompanyName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.JobDescription)
+                @Html.TextAreaFor(m => m.JobDescription, new { @class = "form-control" })
+                <div style="color:red;">
+                    @Html.ValidationMessageFor(m => m.JobDescription)
+                </div>
+            </div>
+
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"> Save </button>
+                @Html.ActionLink("Cancel", "GetAllExperience", "Experience", null, new { @class = "btn btn-info", @style = "color:white" })
+
+            </div>
+        }
+    }
+    else
+    {
+        <h3> Add Experience</h3>
+        <div style="color:red;">
+            @Html.ValidationSummary()
+        </div>
+
+            @using (Html.BeginForm("SaveExperience", "Experience", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.JobName)
+                    @Html.TextBoxFor(m => m.JobName, new { @class = "form-control" })
+                    <div style="color:red;">
+                        @Html.ValidationMessageFor(m => m.JobName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CompanyName)
+                    @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+                    <div style="color:red;">
+                        @Html.ValidationMessageFor(m => m.CompanyName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.JobDescription)
+                    @Html.TextAreaFor(m => m.JobDescription, new { @class = "form-control" })
+                    <div style="color:red;">
+                        @Html.ValidationMessageFor(m => m.JobDescription)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"> Save </button>
+                    @Html.ActionLink("Cancel", "GetAllExperience", "Experience", null, new { @class = "btn btn-info", @style = "color:white" })
+
+                </div>
+            }
+
+    }
+
+}
+else
+{
+    <h3> Add Experience</h3>
+            <div style="color:red;">
+                @Html.ValidationSummary()
+            </div>
+
+            @using (Html.BeginForm("SaveExperience", "Experience", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.JobName)
+                    @Html.TextBoxFor(m => m.JobName, new { @class = "form-control" })
+                    <div style="color:red;">
+                        @Html.ValidationMessageFor(m => m.JobName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CompanyName)
+                    @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+                    <div style="color:red;">
+                        @Html.ValidationMessageFor(m => m.CompanyName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.JobDescription)
+                    @Html.TextAreaFor(m => m.JobDescription, new { @class = "form-control" })
+                    <div style="color:red;">
+                        @Html.ValidationMessageFor(m => m.JobDescription)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"> Save </button>
+                    @Html.ActionLink("Cancel", "GetAllExperience", "Experience", null, new { @class = "btn btn-info", @style = "color:white" })
+                </div>
+            }
+
+}
+
+
+
+
+

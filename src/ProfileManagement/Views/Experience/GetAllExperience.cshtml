@@ -1,0 +1,53 @@
+﻿@model ProfileManagement.ViewModels.ExperienceListViewModel
+
+@{
+    ViewBag.Title = "Experience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model.Experience.Count > 0)
+{
+
+    <div class="jumbotron">
+        <div class="form-group">
+            <h3>Want to Add More Job Experience?</h3>
+            @Html.ActionLink("Add Experience", "AddExperience", "Experience", null, new { @class = "btn btn-success", @style = "color:white" })
+            @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-info", @style = "color:white" })
+        </div>
+    </div>
+
+    <h3 class="text-center">Here are Jing's Previous Expirence</h3><br />
+    <table class="table table-bordered table-hover">
+        <tr style="font-size:large;">
+            <td>Job Name</td>
+            <td>Company Name</td>
+            <td>Job Description</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+        @foreach (var experience in Model.Experience)
+        {
+            <tr style="font-size:medium;">
+                <td>@Html.ActionLink(experience.JobName, "GetExperience", "Experience", new { id = experience.Id })</td>
+                <td>@experience.CompanyName</td>
+                <td>@experience.JobDescription</td>
+                <td>@Html.ActionLink(" Edit ", "EditExperience", "Experience", new { id = experience.Id }, new { @class = "btn btn-success", @style = "color:white" })</td>
+                <td>@Html.ActionLink("Delete", "DeleteExperience", "Experience", new { id = experience.Id }, new { @class = "btn btn-danger", @style = "color:white", onclick = "return confirm('Do you really want to delete Job Experience?')" })</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="jumbotron">
+        <div class="form-group">
+            <h3><strong>No Job Experience Found.</strong></h3><br />
+            <h3>Want to Add Job Experience?</h3><br />
+            @Html.ActionLink("Add Experience", "AddExperience", "Experience", null, new { @class = "btn btn-success", @style = "color:white" })
+            @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-info", @style = "color:white" })
+        </div>
+    </div>
+}
+
+
